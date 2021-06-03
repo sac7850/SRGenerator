@@ -1,0 +1,53 @@
+{
+	"name": "srg",
+	"publisher": "smace",
+	"displayName": "Static Resource Generator",
+	"description": "Generate a Static Resource folder with metadata.",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.56.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"workspaceContains:sfdx-project.json",
+		"onCommand:srg.generateStaticResource"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "srg.generateStaticResource",
+				"title": "Generate Static Resource"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+			{
+				"command": "srg.generateStaticResource",
+				"when": "explorerResourceIsFolder && resourceFilename == staticresources"
+			}]
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.56.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.0.4",
+		"@types/node": "^12.11.7",
+		"eslint": "^7.19.0",
+		"glob": "^7.1.6",
+		"mocha": "^8.2.1",
+		"typescript": "^4.1.3",
+		"vscode-test": "^1.5.0"
+	},
+	"dependencies": {
+		"mkdirp": "^1.0.4",
+		"path": "^0.12.7"
+	}
+}
